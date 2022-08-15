@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
-import type { ResponsiveProp, Responsive } from 'types'
 import { theme } from 'themes'
+import type { ResponsiveProp, Responsive } from 'types'
 
 export type AppTheme = typeof theme
 
-// keyof typeof とは
 type SpaceThemeKeys = keyof typeof theme.space
 type ColorThemeKeys = keyof typeof theme.colors
 type FontSizeThemeKeys = keyof typeof theme.fontSizes
@@ -19,10 +18,10 @@ export type LetterSpacing = LetterSpacingThemeKeys | (string & {})
 export type LineHeight = LineHeightThemeKeys | (string & {})
 
 const BREAKPOINTS: { [key: string]: string } = {
-  sm: '640px',
-  md: '768px',
-  lg: '1024px',
-  xl: '1280px',
+  sm: '640px', // 640px以上
+  md: '768px', // 768px以上
+  lg: '1024px', // 1024px以上
+  xl: '1280px', // 1280px以上
 }
 
 export function toPropValue<T>(
@@ -120,6 +119,7 @@ function toThemeValueIfNeeded<T>(propKey: string, value: T, theme?: AppTheme) {
   ) {
     return theme.lineHeights[value]
   }
+
   return value
 }
 
@@ -134,7 +134,6 @@ function isResponsivePropType<T>(prop: any): prop is ResponsiveProp<T> {
   )
 }
 
-// is ってなんだろう?
 function isSpaceThemeKeys(prop: any, theme: AppTheme): prop is SpaceThemeKeys {
   return Object.keys(theme.space).filter((key) => key == prop).length > 0
 }
@@ -163,5 +162,5 @@ function isLineHeightThemeKeys(
   prop: any,
   theme: AppTheme,
 ): prop is LineHeightThemeKeys {
-  return Object.keys(theme.lineHeight).filter((key) => key == prop).length > 0
+  return Object.keys(theme.lineHeights).filter((key) => key == prop).length > 0
 }
