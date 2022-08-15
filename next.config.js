@@ -18,6 +18,17 @@ const nextConfig = {
 
     return compilerConfig
   })(),
+
+  // Next.js の rewrites 機能を使っている
+  //  指定したURLパターンを内部で別の URL に変換する機能
+  async rewrites() {
+    return [
+      {
+        source: `${process.env.NEXT_PUBLIC_API_BASE_PATH}/:match*`,
+        destination: `${process.env.API_BASE_URL}/:match*`,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
