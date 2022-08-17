@@ -1,10 +1,10 @@
-import SigninFormContainer from 'containers/SigninFromContainer'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import AppLogo from 'components/atoms/AppLogo'
 import Box from 'components/layout/Box'
 import Flex from 'components/layout/Flex'
 import Layout from 'components/templates/Layout'
+import SigninFormContainer from 'containers/SigninFormContainer'
 
 const SigninPage: NextPage = () => {
   const router = useRouter()
@@ -31,7 +31,7 @@ const SigninPage: NextPage = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Box margintBottom={2}>
+          <Box marginBottom={2}>
             <AppLogo />
           </Box>
           <Box width="100%">
