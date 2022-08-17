@@ -1,5 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import CartProduct from './index';
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import CartProduct from './index'
 
 export default {
   title: 'Organisms/CartProduct',
@@ -45,13 +45,13 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof CartProduct>;
+} as ComponentMeta<typeof CartProduct>
 
 const Template: ComponentStory<typeof CartProduct> = (args) => (
   <CartProduct {...args} />
 )
 
-export const NiceShoes = Template.bind({});
+export const NiceShoes = Template.bind({})
 NiceShoes.args = {
   id: 1,
   imageUrl: '/images/sample/1.jpg',

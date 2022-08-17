@@ -6,22 +6,44 @@ import Text from 'components/atoms/Text'
 import Box from 'components/layout/Box'
 import Flex from 'components/layout/Flex'
 
+// 削除ボタンのテキスト
 const RemoveText = styled(Text)`
-  cursor: ponter;
+  cursor: pointer;
   &:hover {
     text-decoration: underline;
   }
 `
 
-interface CatrProductProps {
+interface CartProductProps {
+  /**
+   * 商品ID
+   */
   id: number
+  /**
+   * 商品画像URL
+   */
   imageUrl: string
+  /**
+   * 商品タイトル
+   */
   title: string
+  /**
+   * 商品価格
+   */
   price: number
+  /**
+   * 購入ボタンを押した時のイベントハンドラ
+   */
   onBuyButtonClick?: (id: number) => void
+  /**
+   * 削除ボタンを押した時のイベントハンドラ
+   */
   onRemoveButtonClick?: (id: number) => void
 }
 
+/**
+ * カート商品
+ */
 const CartProduct = ({
   id,
   imageUrl,
@@ -29,12 +51,12 @@ const CartProduct = ({
   price,
   onBuyButtonClick,
   onRemoveButtonClick,
-}: CatrProductProps) => {
+}: CartProductProps) => {
   return (
     <Flex justifyContent="space-between">
       <Flex>
         <Box width="120px" height="120px">
-          <Link href={`/product/${id}`} passHref>
+          <Link href={`/products/${id}`} passHref>
             <a>
               <Image
                 quality="85"
@@ -75,7 +97,7 @@ const CartProduct = ({
               >
                 購入
               </Button>
-              {/* 削除ボタン(モバイル) */}
+              {/* 削除ボタン (モバイル) */}
               <Button
                 marginLeft={1}
                 width={{ base: '100px', md: '200px' }}
@@ -90,6 +112,7 @@ const CartProduct = ({
         </Box>
       </Flex>
       <Box display={{ base: 'none', md: 'block' }}>
+        {/* 削除ボタン (デスクトップ) */}
         <RemoveText
           color="danger"
           onClick={() => onRemoveButtonClick && onRemoveButtonClick(id)}
