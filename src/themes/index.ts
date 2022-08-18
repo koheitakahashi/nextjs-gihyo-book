@@ -4,7 +4,6 @@ import letterSpacings from './letterSpacings'
 import lineHeights from './lineHeights'
 import space from './space'
 
-// as const とは?
 export const theme = {
   space,
   fontSizes,
