@@ -6,18 +6,18 @@ import type {
 } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import type { ApiContext } from 'types'
 import BreadcrumbItem from 'components/atoms/BreadcrumbItem'
 import Separator from 'components/atoms/Separator'
 import Box from 'components/layout/Box'
 import Flex from 'components/layout/Flex'
 import Breadcrumb from 'components/molecules/Breadcrumb'
 import Layout from 'components/templates/Layout'
-import UserPdoructCardListContainer from 'containers/UserProductCardListContainer'
+import UserProductCardListContainer from 'containers/UserProductCardListContainer'
 import UserProfileContainer from 'containers/UserProfileContainer'
 import getAllProducts from 'services/products/get-all-products'
 import getAllUsers from 'services/users/get-all-users'
 import getUser from 'services/users/get-user'
+import type { ApiContext } from 'types'
 
 type UserPageProps = InferGetStaticPropsType<typeof getStaticProps>
 
@@ -67,7 +67,7 @@ const UserPage: NextPage<UserPageProps> = ({
               ユーザー商品カードリストコンテナ
               ユーザーが所持する商品カードリストを表示する。useSearchで常に最新のデータを取得する。
             */}
-            <UserPdoructCardListContainer userId={id} products={products} />
+            <UserProductCardListContainer userId={id} products={products} />
           </Box>
         </Box>
       </Flex>
@@ -94,6 +94,8 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
     throw new Error('params is undefined')
   }
 
+  // ユーザー情報と ユーザーの所持する商品を取得し、静的ページを作成
+  // 10秒でrevalidateな状態にし、静的ページを更新する
   const userId = Number(params.id)
   const [user, products] = await Promise.all([
     getUser(context, { id: userId }),
