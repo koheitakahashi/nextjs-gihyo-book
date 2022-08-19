@@ -18,7 +18,7 @@ describe('Button', () => {
     renderResult.unmount()
   })
 
-  it('ボタンを押した時にonClickが呼ばれる', () => {
+  it('ボタンを押したときにonClickが呼ばれる', () => {
     fireEvent.click(screen.getByText('Button'))
     expect(handleClick).toHaveBeenCalledTimes(1)
   })

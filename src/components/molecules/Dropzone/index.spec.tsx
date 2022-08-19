@@ -21,15 +21,14 @@ describe('Dropzone', () => {
   })
 
   it('ファイルがドロップされたらonDropが呼ばれる', async () => {
-    // ファイルをドロップする
     const element = await screen.findByTestId('dropzone')
     fireEvent.drop(element, {
       dataTransfer: {
-        files: [new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })],
+        files: [
+          new File(['テストファイル'], 'chckorris.ping', { type: 'image/png' }),
+        ],
       },
     })
-
-    // ファイルが入力されたか確認
     expect(handleDrop).toHaveBeenCalledTimes(1)
   })
 })

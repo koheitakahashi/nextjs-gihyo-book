@@ -14,7 +14,6 @@ describe('SigninForm', () => {
   let handleSignin: jest.Mock
 
   beforeEach(() => {
-    // ダミー関数
     handleSignin = jest.fn()
     renderResult = render(
       <ThemeProvider theme={theme}>
@@ -27,40 +26,32 @@ describe('SigninForm', () => {
     renderResult.unmount()
   })
 
-  it('ユーザ名とパスワード入力後、onSigninが呼ばれる', async () => {
-    // DOMが更新される事を保証、React Hook FormのhandleSubmitが呼ばれるまで待つ
+  it('ユーザー名とパスワードを入力後、onSigin が呼ばれる', async () => {
     await act(async () => {
-      // ユーザー名入力
       const inputUsernameNode = screen.getByPlaceholderText(
         /ユーザ名/,
       ) as HTMLInputElement
       fireEvent.change(inputUsernameNode, { target: { value: 'user' } })
-      // パスワード入力
+
       const inputPasswordNode = screen.getByPlaceholderText(
         /パスワード/,
       ) as HTMLInputElement
       fireEvent.change(inputPasswordNode, { target: { value: 'password' } })
-      // サインインボタンをクリック
+
       fireEvent.click(screen.getByText('サインイン'))
     })
-
-    // handleSigninが呼ばれた事を確認
     expect(handleSignin).toHaveBeenCalledTimes(1)
   })
 
-  it('ユーザ名入力だけでは、バリデーションエラーでonSigninが呼ばれない', async () => {
-    // DOMが更新される事を保証、React Hook FormのhandleSubmitが呼ばれるまで待つ
+  it('ユーザー名入力だけでは、バリデーションエラーでonSigninが呼ばれない', async () => {
     await act(async () => {
-      // ユーザー名入力
       const inputUsernameNode = screen.getByPlaceholderText(
         /ユーザ名/,
       ) as HTMLInputElement
       fireEvent.change(inputUsernameNode, { target: { value: 'user' } })
-      // サインインボタンをクリック
+
       fireEvent.click(screen.getByText('サインイン'))
     })
-
-    // handleSigninが呼ばれてないこと事を確認
     expect(handleSignin).toHaveBeenCalledTimes(0)
   })
 })
