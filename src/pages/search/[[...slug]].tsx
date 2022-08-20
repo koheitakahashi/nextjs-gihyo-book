@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import type { Category, Condition } from 'types'
 import BreadcrumbItem from 'components/atoms/BreadcrumbItem'
 import Text from 'components/atoms/Text'
 import Box from 'components/layout/Box'
@@ -11,6 +10,7 @@ import Breadcrumb from 'components/molecules/Breadcrumb'
 import FilterGroup from 'components/molecules/FilterGroup'
 import Layout from 'components/templates/Layout'
 import ProductCardListContainer from 'containers/ProductCardListContainer'
+import type { Category, Condition } from 'types'
 
 const Anchor = styled(Text)`
   cursor: pointer;

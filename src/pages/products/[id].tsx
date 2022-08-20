@@ -7,7 +7,6 @@ import type {
 } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import type { ApiContext, Category } from 'types'
 import BreadcrumbItem from 'components/atoms/BreadcrumbItem'
 import Separator from 'components/atoms/Separator'
 import Text from 'components/atoms/Text'
@@ -21,6 +20,7 @@ import AddToCartButtonContainer from 'containers/AddToCartButtonContainer'
 import getAllProducts from 'services/products/get-all-products'
 import getProduct from 'services/products/get-product'
 import useProduct from 'services/products/use-product'
+import type { ApiContext, Category } from 'types'
 
 const categoryNameDict: Record<Category, string> = {
   book: '本',

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import useSWR from 'swr'
-import type { ApiContext, User } from 'types'
 import signin from 'services/auth/signin'
 import signout from 'services/auth/signout'
+import type { ApiContext, User } from 'types'
 
 type AuthContextType = {
   authUser?: User
