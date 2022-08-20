@@ -1,14 +1,15 @@
 import { render, screen, RenderResult } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
-import type { User, Product } from 'types'
 import Header from '.'
 import { AuthContextProvider } from 'contexts/AuthContext'
-import { theme } from 'themes'
 
 // ShoppingCartContextのモック
 jest.mock('contexts/ShoppingCartContext')
 // eslint-disable-next-line import/order
 import { useShoppingCartContext } from 'contexts/ShoppingCartContext'
+import { theme } from 'themes'
+import type { User, Product } from 'types'
+
 // オリジナルのShoppingCartContextProviderを取得
 const { ShoppingCartContextProvider } = jest.requireActual(
   'contexts/ShoppingCartContext',

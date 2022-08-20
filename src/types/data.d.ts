@@ -10,7 +10,7 @@ export type User = {
   description: string
 }
 
-export type Production = {
+export type Product = {
   id: number
   category: Category
   title: title
